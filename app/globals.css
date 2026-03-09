@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Define your main color */
+:root {
+  --background: rgb(80, 69, 122);
+  --primary: rgb(93 63 211);
+}
+
+/* Tell Tailwind to use that variable */
+@theme inline {
+  --color-background: var(--background);
+  --color-primary: var(--primary)
+}
+
+/* Apply background to body */
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+  body {
+    @apply bg-background text-white;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+}
