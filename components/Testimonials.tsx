@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Testimonials(){
 
@@ -23,18 +23,20 @@ export default function Testimonials(){
         { start: 0, end: 6, className: "animate-scroll" }
     ];
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 40 },
-        visible: (i:number) => ({
+    const cardVariants: Variants = {
+        hidden: {
+            opacity: 0,
+            y: 40
+        },
+        visible: {
             opacity: 1,
             y: 0,
             transition: {
-                delay: i * 0.15,
-                duration: 0.5,
-                ease: "easeOut"
+            duration: 0.5,
+            ease: "easeOut" as const
             }
-        })
-    }
+        }
+    };
 
     const renderCard = (testimonial:testimonial, index:number) => (
         <motion.div
