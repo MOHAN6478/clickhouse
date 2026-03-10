@@ -47,7 +47,7 @@ export default function Navbar() {
         initial={{ y: 0 }}
         animate={{ y: showNavbar ? 0 : -100 }}
         transition={{ duration: 0.35 }}
-        className="fixed top-0 left-0 w-full z-50 flex items-center justify-between py-4 px-6 md:px-16 lg:px-24 xl:px-40 text-white backdrop-blur-md "
+        className="fixed top-0 left-0 w-full z-50 flex items-center justify-between py-4 px-6 md:px-16 lg:px-24 xl:px-40 backdrop-blur-md"
       >
 
         {/* Logo */}
@@ -64,25 +64,25 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-20 text-lg">
+        <div className="hidden md:flex items-center gap-8 2xl:gap-20 text-lg text-secondary transition">
 
-          <a href="#about" className="hover:text-gray-300 transition">
+          <a href="#about" className="hover:text-white transition-colors duration-300">
             About us
           </a>
 
-          <a href="#features" className="hover:text-gray-300 transition">
+          <a href="#features" className="hover:text-white transition-colors duration-300">
             Features
           </a>
 
-          <a href="#services" className="hover:text-gray-300 transition">
+          <a href="#services" className="hover:text-white transition-colors duration-300">
             Services
           </a>
 
-          <a href="#faqs" className="hover:text-gray-300 transition">
+          <a href="#faqs" className="hover:text-white transition-colors duration-300">
             Faq
           </a>
 
-          <a href="#contact" className="hover:text-gray-300 transition">
+          <a href="#contact" className="hover:text-white transition-colors duration-300">
             Contact
           </a>
 
@@ -91,7 +91,7 @@ export default function Navbar() {
         {/* Desktop Button */}
         <Link
           href="#"
-          className="hidden md:block px-6 py-2 bg-black rounded-full text-white hover:bg-gray-800 transition active:scale-95"
+          className="hidden md:block px-6 py-2 bg-primary font-medium rounded-full text-white hover:bg-primary/20 border border-transparent hover:border-primary transition active:scale-95"
         >
           Get Started
         </Link>
@@ -117,26 +117,26 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-xl font-medium text-white backdrop-blur-xl bg-black/50 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-xl font-medium text-secondary backdrop-blur-xl md:hidden transition"
           >
 
-            <a href="#about" onClick={() => setIsMenuOpen(false)}>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               About us
             </a>
 
-            <a href="#features" onClick={() => setIsMenuOpen(false)}>
+            <a href="#features" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Features
             </a>
 
-            <a href="#services" onClick={() => setIsMenuOpen(false)}>
+            <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Services
             </a>
 
-            <a href="#faqs" onClick={() => setIsMenuOpen(false)}>
+            <a href="#faqs" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Faq
             </a>
 
-            <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Contact
             </a>
 

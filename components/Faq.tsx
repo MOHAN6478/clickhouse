@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 interface QAProps {
   question: string
@@ -11,28 +12,52 @@ interface QAProps {
 
 const QA: QAProps[] = [
   {
-    question: "Do I need prior experience with webflow?",
-    answer: "No, This course is designed for beginners and advanced users alike."
+    question: "How is this different from a ClickHouse® SaaS provider?",
+    answer: 'SaaS platforms often use proprietary forks and charge a massive premium. We manage 100% Open-Source ClickHouse® on your infrastructure (Cloud, On-Prem, or K8s). You keep data sovereignty and avoid the "Enterprise" tax.'
   },
   {
-    question: "Which Webflow plan do i need?",
-    answer: "Webflow offers a free plan that many students use during the course."
+    question: `What does "Total Ownership" actually mean? We aren't consultants who just send PDFs.`,
+    answer: "We are your DBAs. We design the schema, build the Airflow pipelines, and take the 24/7 on-call rotation. If it breaks at 3 AM, it’s our problem, not yours."
   },
   {
-    question: "How long do i have access to the course",
-    answer: "Lifetime access - watch anytime, revisit anytime, with free updates."
+    question: `Why shouldn't we just have our DevOps team handle it?`,
+    answer: `ClickHouse® is easy to learn but difficult to master. Generalist DevOps teams often struggle with its specific storage engines and memory management, leading to costly outages or "slow" performance that’s actually just poor configuration.`
   },
   {
-    question: "Is mentoring included?",
-    answer: "Yes.Depending on your chosen plan, you get 2-12 months of mentoring."
+    question: "Do you support ClickHouse® on Kubernetes?",
+    answer: "Yes. We specialize in Kubernetes orchestration using the ClickHouse® Operator or custom Helm charts, ensuring persistent storage and pod scaling are handled correctly for stateful workloads."
   },
   {
-    question: "Do i get a certificate?",
-    answer: "Yes. Completion of the course earns you a Leadclass certification."
+    question: "Can you handle our data ingestion (Airflow, Kafka)?",
+    answer: "Absolutely. A database is useless without reliable pipelines. We build and maintain the end-to-end flow, from Kafka or S3 ingestion to Apache Airflow orchestration."
   },
   {
-    question: "Can i pay in installments?",
-    answer: "Absolutely. Basic and Pro plans offer 3 easy monthly payments."
+    question: 'What is the "Expertise Gap" you mention?',
+    answer: `It's the distance between having a running cluster and having a reliable one. We bridge that gap by providing senior-level DBA talent that would otherwise take you 6-12 months to recruit and train.`
+  },
+  {
+    question: "Do we lose control of our infrastructure?",
+    answer: "Never. Everything runs in your environment. We have access to manage it, but you own the accounts, the hardware, and the data."
+  },
+  {
+    question: "How do you handle security and compliance?",
+    answer: "Since we operate within your environment, we adhere to your existing security protocols (VPC peering, IAM roles, etc.)."
+  },
+  {
+    question: "What happens if we want to end the contract?",
+    answer: "There is zero vendor lock-in. Because we use open-source ClickHouse®, you simply revoke our access. You are left with a healthy, optimized cluster, not a proprietary mess you can't manage."
+  },
+  {
+    question: "Do you help with query optimization?",
+    answer: `Yes. We don't just keep the lights on; we constantly audit query logs to find bottlenecks, optimize joins, and refine materialized views to keep your dashboards sub-second.`
+  },
+  {
+    question: "Can you manage ClickHouse® on-premises?",
+    answer: "Yes. We support deployments in private data centers and on bare metal. We are infrastructure-agnostic."
+  },
+  {
+    question: "How do we get started?",
+    answer: `We begin with a deep-dive audit of your current data stack. We identify the "hurdles," map out a migration or optimization roadmap, and take over the operations from there.`
   }
 ]
 
@@ -59,8 +84,8 @@ export default function Faqs(){
           Frequently <br /> asked questions
         </p>
 
-        <p className="text-base text-gray-400 max-w-md mx-auto">
-          Everything you need to know about The Complete Path to Webflow Mastery.
+        <p className="text-base text-secondary max-w-md mx-auto">
+          Everything you need to know about The Complete Path to clickHouse services.
         </p>
       </motion.div>
 
@@ -74,10 +99,10 @@ export default function Faqs(){
             whileInView={{opacity:1, y:0}}
             transition={{duration:0.4, delay:index * 0.1}}
             viewport={{once:true}}
-            className={`mb-4 rounded-2xl border overflow-hidden transition-all duration-300 
+            className={`mb-4 rounded-2xl border overflow-hidden transition-all duration-300
             ${openSection === index
-              ? "border-purple-500/60 bg-purple-950/90"
-              : "bg-gradient-to-br from-[#0f0f1a] to-[#14142a]"
+              ? "border border-primary/80 bg-primary"
+              : "bg-transparent border border-primary/20"
             }`}
           >
 
@@ -95,14 +120,9 @@ export default function Faqs(){
               <motion.div
                 animate={{ rotate: openSection === index ? 180 : 0 }}
                 transition={{duration:0.3}}
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-500"
+                className="w-11 h-11 flex items-center justify-center border border-primary/20 rounded-full bg-transparent"
               >
-                <Image
-                  src="/dropdown_icon.svg"
-                  alt="dropdown icon"
-                  width={18}
-                  height={18}
-                />
+                <MdOutlineKeyboardArrowDown className="text-2xl"/>
               </motion.div>
 
             </div>

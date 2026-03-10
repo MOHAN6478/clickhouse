@@ -12,7 +12,7 @@ import CompanyTrust from "@/components/CompanyTrusted";
 
 export default function Home() {
   return (
-      <div className="min-h-screen backshad">
+      <div className="min-h-screen background">
         <Navbar />
         <Hero />
         <CompanyTrust />
@@ -20,7 +20,7 @@ export default function Home() {
         <Details />
         <Services />
         <About />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <ContactForm />
         <Footer />
       </div>

@@ -2,14 +2,16 @@
 
 /* Define your main color */
 :root {
-  --background: rgb(80, 69, 122);
-  --primary: rgb(93 63 211);
+  --color-background: #000000;
+  --color-primary: #5D3FD3;
+  --color-secondary: #A0A0A0;
 }
 
 /* Tell Tailwind to use that variable */
 @theme inline {
-  --color-background: var(--background);
-  --color-primary: var(--primary)
+  --color-background: var(--color-background);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
 }
 
 /* Apply background to body */
@@ -20,6 +22,15 @@
   body {
     @apply bg-background text-white;
   }
+}
+
+.background {
+  margin: 0;
+  background: 
+    radial-gradient(circle at 40% 70%, rgba(93, 63, 211, 0.15) 10%, transparent 100%),
+    radial-gradient(circle at 40% 80%, rgba(93, 63, 211, 0.1) 10%, transparent 100%),
+    #050505;
+  background-attachment: fixed;
 }
 
 
