@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -95,9 +94,10 @@ export default function Faqs(){
 
           <motion.div
             key={index}
+            layout
             initial={{opacity:0, y:20}}
             whileInView={{opacity:1, y:0}}
-            transition={{duration:0.4, delay:index * 0.1}}
+            transition={{duration:0.4, delay:index * 0.08}}
             viewport={{once:true}}
             className={`mb-4 rounded-2xl border overflow-hidden transition-all duration-300
             ${openSection === index
@@ -119,8 +119,8 @@ export default function Faqs(){
               {/* Icon */}
               <motion.div
                 animate={{ rotate: openSection === index ? 180 : 0 }}
-                transition={{duration:0.3}}
-                className="w-11 h-11 flex items-center justify-center border border-primary/20 rounded-full bg-transparent"
+                transition={{duration:0.25}}
+                className="w-11 h-11 flex items-center justify-center border border-primary/20 rounded-full"
               >
                 <MdOutlineKeyboardArrowDown className="text-2xl"/>
               </motion.div>
@@ -128,14 +128,16 @@ export default function Faqs(){
             </div>
 
             {/* Answer */}
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
 
               {openSection === index && (
 
                 <motion.div
-                  initial={{height:0, opacity:0}}
-                  animate={{height:"auto", opacity:1}}
-                  exit={{height:0, opacity:0}}
+                  key="content"
+                  layout
+                  initial={{opacity:0, height:0}}
+                  animate={{opacity:1, height:"auto"}}
+                  exit={{opacity:0, height:0}}
                   transition={{duration:0.35}}
                   className="px-8 overflow-hidden"
                 >

@@ -82,15 +82,11 @@ export default function Navbar() {
             Faq
           </a>
 
-          <a href="#contact" className="hover:text-white transition-colors duration-300">
-            Contact
-          </a>
-
         </div>
 
         {/* Desktop Button */}
         <Link
-          href="#"
+          href="#contact"
           className="hidden md:block px-6 py-2 bg-primary font-medium rounded-full text-white hover:bg-primary/20 border border-transparent hover:border-primary transition active:scale-95"
         >
           Get Started
@@ -117,7 +113,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-xl font-medium text-secondary backdrop-blur-xl md:hidden transition"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-xl font-medium text-secondary backdrop-blur-xl md:hidden"
           >
 
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
@@ -134,10 +130,6 @@ export default function Navbar() {
 
             <a href="#faqs" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Faq
-            </a>
-
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
-              Contact
             </a>
 
           </motion.div>

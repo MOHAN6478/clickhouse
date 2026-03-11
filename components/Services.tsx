@@ -1,46 +1,60 @@
 "use client"
 
-import { IoBookOutline } from "react-icons/io5";
 import Card from "./Card";
-import { AiOutlineGlobal } from "react-icons/ai";
-import { CiStreamOn } from "react-icons/ci";
 import { motion } from "framer-motion";
 
 const serInfo = [
   {
-    icon: <IoBookOutline size={28} />,
-    heading: "Managed Services",
-    description:"Comprehensive care for your open-source databases: installation, optimization, security, and 24/7 support. Focus on your business while we keep your databases running smoothly."
+    heading: "Infrastructure & Deployment",
+    description: [
+      {
+        title: "Anywhere Implementation",
+        text: `We deploy and manage ClickHouse® on Public Cloud (AWS, GCP, Azure), Private Cloud, Bare Metal, or Kubernetes. We handle the orchestration so you don’t have to.`
+      },
+      {
+        title: "Capacity Planning",
+        text: `Precision hardware sizing and cluster architecture. We ensure your infrastructure is built to scale without overprovisioning or wasting budget.`
+      }
+    ]
   },
   {
-    icon: <AiOutlineGlobal size={28} />,
-    heading: "Performance & Security Audit",
-    description: "Identify bottlenecks like slow queries and inefficient indexing, and secure your databases with proactive audits to safeguard valuable data.",
+    heading: "Architecture & Data Engineering",
+    description: [
+      {
+        title: "Schema Design & Modeling",
+        text: `ClickHouse® is only as fast as its schema. We design custom table structures and select the right engines to ensure sub-second query performance at any scale.`
+      },
+      {
+        title: "Data Pipelines (Apache Airflow)",
+        text: 'We build and manage robust ETL/ELT pipelines. Using Airflow, we ensure your data ingestion is reliable, automated, and perfectly synced with your ClickHouse® cluster.'
+      }
+    ]
   },
   {
-    icon: <CiStreamOn size={28} />,
-    heading: "Consulting Services",
-    description: "Strategic guidance to optimize performance, security, and scalability, with actionable recommendations tailored to your database needs.",
+    heading: "Optimization & Migration",
+    description: [
+      {
+        title: "Performance Tuning",
+        text: "We dive into your query logs to eliminate bottlenecks. From optimizing joins to fine-tuning settings, we squeeze every drop of performance out of your environment."
+      },
+      {
+        title: "Legacy Migrations",
+        text: "Moving from a costly, slow OLAP system? We manage the entire transition - data mapping, validation, and cutover - with zero data loss and minimal downtime."
+      }
+    ]
   },
   {
-    icon: <CiStreamOn size={28} />,
-    heading: "Remote DBA",
-    description:"24/7 expert monitoring, support, and maintenance without hiring full-time staff, ensuring database availability and optimization." ,
-  },
-  {
-    icon: <CiStreamOn size={28} />,
-    heading: "Cloud Cost Optimisation",
-    description: "Reduce cloud costs while enhancing performance with tailored strategies to optimize your cloud infrastructure.",
-  },
-  {
-    icon: <CiStreamOn size={28} />,
-    heading: "Database Proxies",
-    description: "Improve scalability and reliability with managed proxies like Maxscale and ProxySQL for load balancing and enhanced database performance.",
-  },
-  {
-    icon: <CiStreamOn size={28} />,
-    heading: "Database Support Services",
-    description: "Proactive database support, including hotfixes, troubleshooting, performance tuning, and critical patching with defined SLA response times.",
+    heading: "Managed Operations",
+    description: [
+      {
+        title: "24/7/365 Production Support",
+        text: "We are your dedicated on-call team. We provide around-the-clock monitoring and incident response. If a node goes down or a query lags at 3 AM, we solve it."
+      },
+      {
+        title: "Support & Maintenance Contracts",
+        text: "Long-term peace of mind through dedicated SLAs. We handle the upgrades, patches, and scaling as your data footprint grows, acting as your in-house DBA team."
+      }
+    ]
   },
 ];
 
@@ -65,13 +79,13 @@ export default function Services(){
                 <div className="bg-black/30 p-3 rounded-md pb-10">
 
                 
-                    <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8 w-full px-5">
+                    <motion.div className="grid grid-cols-1 md:grid-cols-2  gap-8 pt-8 w-full px-5">
                     
                         {serInfo.map((item, index) => (
                             <Card
                                 key={index}
                                 index={index}
-                                icon={item.icon}
+                                icon={null}
                                 heading={item.heading}
                                 description={item.description}
                             />
