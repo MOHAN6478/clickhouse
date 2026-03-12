@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion, Variants } from "framer-motion";
 
@@ -51,6 +51,7 @@ const dropdownVariants: Variants = {
 
 export default function ContactForm() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
+  const [ loading, setLoading ] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<FormProps>({
     name: "",
@@ -74,19 +75,55 @@ export default function ContactForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Form Submitted successfully");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+      console.log(data)
+ 
+      if(!response.ok){
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      alert("Message sent successfully!");
+
+      // Reset Form
+      setFormData({
+        name: "",
+        email: "",
+        companyName: "",
+        Infrastructure: "",
+        Primarypoint: "",
+        Datavolume: "",
+        message: ""
+      })
+
+    } catch (error: any) {
+      console.error(error)
+      alert( error.message || "Failed to send Message")
+    } finally {
+      setLoading(false)
+    } 
   };
 
-  const isFormVaild =
-    formData.name &&
+  const isFormValid =
+    Boolean(formData.name &&
     formData.email &&
     formData.companyName &&
-    formData.message &&
     formData.Infrastructure &&
     formData.Primarypoint &&
-    formData.Datavolume;
+    formData.Datavolume) 
+    && formData.message.length >= 50;
 
   return (
     <div id="contact" className="mx-auto mb-20">
@@ -293,17 +330,21 @@ export default function ContactForm() {
           variants={itemVariants}
           className="mt-6 w-full max-w-[700px]"
         >
-          <label className="text-white font-bold">Message</label>
+          <label className="text-white font-bold">Message <span className="text-white text-sm">( Minimum - 50 characters )</span></label>
 
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            rows={5}
+            maxLength={50}
+            minLength={0}
             placeholder="Tell us about your current legacy system or ClickHouse® hurdle"
             className="w-full mt-2 p-2 h-40 border border-primary/50 rounded resize-none outline-none placeholder-secondary"
             required
           />
+          <p className="text-xs text-gray-400 mt-1">
+            {formData.message.length} / 50 characters
+          </p>
         </motion.div>
 
         {/* Submit */}
@@ -312,12 +353,19 @@ export default function ContactForm() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.95 }}
           type="submit"
-          disabled={!isFormVaild}
-          className="mt-5 bg-primary hover:bg-indigo-500 disabled:bg-primary/30 text-white h-12 px-4 rounded transition w-full max-w-[700px] text-lg font-medium"
+          disabled={!isFormValid || loading}
+          className="mt-5 bg-primary hover:bg-indigo-500 disabled:bg-primary/10 disabled:text-white/30 text-white h-12 px-4 rounded transition w-full max-w-[700px] text-lg font-medium"
         >
-          Get My Free Infrastructure Audit
+          {loading ? "sending..." : "Get My Free Infrastructure Audit"} 
         </motion.button>
-        <motion.p variants={itemVariants} className="font-bold pt-5">Our Promise :{" "}<span className="font-normal">No spam. Ever. We only send technical responses from our expert team. Your inbox is for engineering, not marketing fluff.</span></motion.p>
+
+        {/* Promises  */}
+        <motion.p 
+          variants={itemVariants} 
+          className="font-bold pt-5 text-[16px]">Our Promise :{" "}
+          <span className="font-normal">No spam. Ever. We only send technical responses from our expert team. Your inbox is for engineering, not marketing fluff.</span>
+        </motion.p>
+
       </motion.form>
     </div>
   );

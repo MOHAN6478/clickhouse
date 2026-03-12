@@ -4,8 +4,6 @@ import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-/* Animation Variants */
-
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
