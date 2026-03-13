@@ -72,12 +72,26 @@ export default function ContactForm() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    const trimmedData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      companyName: formData.companyName.trim(),
+      Infrastructure: formData.Infrastructure,
+      Primarypoint: formData.Primarypoint,
+      Datavolume: formData.Datavolume,
+      message: formData.message.trim()
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -85,11 +99,10 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(trimmedData)
       });
 
       const data = await response.json();
-      console.log(data)
  
       if(!response.ok){
         throw new Error(data.error || "Something went wrong");
@@ -117,13 +130,14 @@ export default function ContactForm() {
   };
 
   const isFormValid =
-    Boolean(formData.name &&
-    formData.email &&
-    formData.companyName &&
-    formData.Infrastructure &&
-    formData.Primarypoint &&
-    formData.Datavolume) 
-    && formData.message.length >= 50;
+    Boolean(
+      formData.name.trim() &&
+      formData.email.trim() &&
+      formData.companyName.trim() &&
+      formData.Infrastructure &&
+      formData.Primarypoint &&
+      formData.Datavolume
+    ) && formData.message.trim().length >= 50;
 
   return (
     <div id="contact" className="mx-auto mb-20">
@@ -343,7 +357,7 @@ export default function ContactForm() {
             required
           />
           <p className="text-xs text-gray-400 mt-1">
-            {formData.message.length} / 50 characters
+            {formData.message.trim().length} / 50 characters
           </p>
         </motion.div>
 
