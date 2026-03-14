@@ -80,7 +80,7 @@ export default function Faqs(){
         className="text-white space-y-6 text-center mb-14"
       >
         <p className="text-4xl md:text-5xl font-semibold max-w-xl">
-          Frequently <br /> asked questions
+          FAQS
         </p>
 
         <p className="text-base text-secondary max-w-md mx-auto">

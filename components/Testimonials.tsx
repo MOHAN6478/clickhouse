@@ -79,7 +79,7 @@ export default function Testimonials(){
     );
 
     return (
-        <div id="testimonials">
+        <section id="testimonials">
 
             <style>
                 {`
@@ -141,6 +141,6 @@ export default function Testimonials(){
                 </div>
 
             </section>
-        </div>
+        </section>
     )
 }

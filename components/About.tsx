@@ -62,7 +62,7 @@ export default function About() {
               Engineers, Not Consultants
             </h3>
             <p>
-              We didn’t start as a marketing agency; we started as engineers tired of seeing companies fail the "easy to learn, difficult to master" test. You don’t need a PDF of advice—you need a team that takes full ownership.
+              We didn’t start as a marketing agency; we started as engineers tired of seeing companies fail the "easy to learn, difficult to master" test. You don’t need a PDF of advice - you need a team that takes full ownership.
             </p>
           </motion.div>
 

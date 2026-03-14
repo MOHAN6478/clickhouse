@@ -66,20 +66,24 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 2xl:gap-20 text-lg text-secondary transition">
 
-          <a href="#about" className="hover:text-white transition-colors duration-300">
-            About us
+          <a href="#services" className="hover:text-white transition-colors duration-300">
+            Services
           </a>
 
           <a href="#features" className="hover:text-white transition-colors duration-300">
             Features
           </a>
 
-          <a href="#services" className="hover:text-white transition-colors duration-300">
-            Services
+          <a href="#faqs" className="hover:text-white transition-colors duration-300">
+            FAQs
           </a>
 
-          <a href="#faqs" className="hover:text-white transition-colors duration-300">
-            Faq
+          <a href="#about" className="hover:text-white transition-colors duration-300">
+            About us
+          </a>
+
+          <a href="https://quantrail-data.com/blog" className="hover:text-white transition-colors duration-300">
+            Blog
           </a>
 
         </div>
@@ -116,20 +120,24 @@ export default function Navbar() {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-xl font-medium text-secondary backdrop-blur-xl md:hidden"
           >
 
-            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
-              About us
+            <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
+              Services
             </a>
 
             <a href="#features" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
               Features
             </a>
 
-            <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
-              Services
+            <a href="#faqs" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
+              FAQs
             </a>
 
-            <a href="#faqs" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
-              Faq
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors duration-300">
+              About us
+            </a>
+
+            <a href="https://quantrail-data.com/blog" className="hover:text-white transition-colors duration-300">
+              Blog
             </a>
 
           </motion.div>

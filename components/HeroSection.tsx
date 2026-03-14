@@ -68,7 +68,7 @@ export default function Hero() {
         >
           We bridge the expertise gap by taking full responsibility for your migration
           from costly legacy systems to high-performance ClickHouse®. From schema
-          design and Airflow pipelines to 24/7/365 production support — we handle the
+          design and Airflow pipelines to 24/7/365 production support - we handle the
           hurdles, you get the results.
         </motion.p>
 
