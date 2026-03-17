@@ -79,8 +79,18 @@ export default function ContactForm() {
     }));
   };
 
+  const messageLength = formData.message.length;
+
+  const trimmedMessageLength = formData.message.trim().length;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (trimmedMessageLength < 50) {
+      alert("Message must be at least 50 characters (exculuding spaces)");
+      return;
+    }
+
     setLoading(true);
 
     const trimmedData = {
@@ -137,7 +147,7 @@ export default function ContactForm() {
       formData.Infrastructure &&
       formData.Primarypoint &&
       formData.Datavolume
-    ) && formData.message.trim().length >= 50;
+    ) && trimmedMessageLength >= 50;
 
   return (
     <div id="contact" className="mx-auto mb-20">
@@ -350,15 +360,22 @@ export default function ContactForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            maxLength={50}
-            minLength={0}
+            maxLength={8000}
+            minLength={50}
             placeholder="Tell us about your current legacy system or ClickHouse® hurdle"
             className="w-full mt-2 p-2 h-40 border border-primary/50 rounded resize-none outline-none placeholder-secondary"
             required
           />
           <p className="text-xs text-gray-400 mt-1">
-            {formData.message.trim().length} / 50 characters
+            {messageLength} / 8000 characters
           </p>
+
+          {trimmedMessageLength > 0 && trimmedMessageLength < 50 && (
+            <p className="text-red-400 text-xs pt-3">
+              Minimum 50 characters required
+            </p>
+          )}
+
         </motion.div>
 
         {/* Submit */}
